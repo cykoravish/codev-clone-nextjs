@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from "react"
-import { Linkedin, Twitter, Facebook, Instagram, Youtube } from "lucide-react"
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import React from "react";
+import { Linkedin, Twitter, Facebook, Instagram, Youtube } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const footerLinks = {
-  "Publishing": [
+  Publishing: [
     { label: "Journal Publishing", href: "#" },
     { label: "Editorial Services", href: "#" },
     { label: "Indexing & Discoverability", href: "#" },
@@ -15,24 +15,24 @@ const footerLinks = {
     { label: "Author Guidelines", href: "#" },
     { label: "Publication Ethics", href: "#" },
   ],
-  "Resources": [
+  Resources: [
     { label: "Blog", href: "#" },
     { label: "Webinars", href: "#" },
     { label: "Publishing Guide", href: "#" },
   ],
-  "Legal": [
+  Legal: [
     { label: "Privacy Policy", href: "#" },
     { label: "Cookie Policy", href: "#" },
     { label: "Terms of Use", href: "#" },
   ],
-}
+};
 
 export default function Footer() {
-  const ref = useScrollReveal<HTMLElement>({ threshold: 0.08 })
+  const ref = useScrollReveal<HTMLElement>({ threshold: 0.08 });
 
   return (
-    <footer ref={ref} className="border-t border-border bg-secondary/30">
-      <div className="mx-auto max-w-7xl px-6 py-14">
+    <footer ref={ref} className="border-t border-border bg-logo">
+      <div className="mx-auto max-w-7xl px-6 py-14 bg-logo">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand column */}
           <div
@@ -40,31 +40,31 @@ export default function Footer() {
             data-reveal="fade-right"
             style={{ "--delay": "0ms" } as React.CSSProperties}
           >
-            <a href="#" className="flex items-center gap-1 mb-4">
-              <svg width="140" height="30" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="0" y="28" fill="hsl(348 75% 40%)" fontSize="24" fontWeight="300" fontFamily="Inter, sans-serif" letterSpacing="-0.5">
-                  halicon
-                </text>
-                <text x="82" y="28" fill="hsl(348 75% 40%)" fontSize="24" fontWeight="700" fontFamily="Inter, sans-serif" letterSpacing="-0.5">
-                  pub
-                </text>
-              </svg>
+            <a href="#" className="flex items-center gap-1">
+              <img
+                src="/images/logo.png"
+                alt="Logo"
+                className="h-7 md:h-8 lg:h-14 w-auto"
+              />
             </a>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Empowering scholarly publishing with comprehensive journal solutions, rigorous quality standards, and global academic reach.
+              Empowering scholarly publishing with comprehensive journal
+              solutions, rigorous quality standards, and global academic reach.
             </p>
 
             <div className="flex items-center gap-3 mt-6">
-              {[Linkedin, Twitter, Facebook, Instagram, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex items-center justify-center w-9 h-9 rounded-full bg-foreground/5 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1"
-                  aria-label="Social link"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+              {[Linkedin, Twitter, Facebook, Instagram, Youtube].map(
+                (Icon, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="flex items-center justify-center w-9 h-9 rounded-full bg-foreground/5 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1"
+                    aria-label="Social link"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                ),
+              )}
             </div>
           </div>
 
@@ -73,9 +73,15 @@ export default function Footer() {
             <div
               key={category}
               data-reveal="fade-up"
-              style={{ "--delay": `${150 + colIndex * 100}ms` } as React.CSSProperties}
+              style={
+                {
+                  "--delay": `${150 + colIndex * 100}ms`,
+                } as React.CSSProperties
+              }
             >
-              <h4 className="text-sm font-semibold text-foreground mb-4">{category}</h4>
+              <h4 className="text-sm font-semibold text-foreground mb-4">
+                {category}
+              </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -100,7 +106,10 @@ export default function Footer() {
         >
           <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
             <span>Kuala Lumpur, Malaysia</span>
-            <a href="mailto:info@haliconpub.com" className="hover:text-primary transition-colors duration-300">
+            <a
+              href="mailto:info@haliconpub.com"
+              className="hover:text-primary transition-colors duration-300"
+            >
               info@haliconpub.com
             </a>
           </div>
@@ -110,5 +119,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
