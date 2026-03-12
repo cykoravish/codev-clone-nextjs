@@ -1,25 +1,30 @@
-import React from "react"
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-import './globals.css'
+import "./globals.css";
+import Header from "@/components/header";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: 'Halicon Publication | Leading Provider of Journal Publishing Solutions',
+  title:
+    "Halicon Publication | Leading Provider of Journal Publishing Solutions",
   description:
-    'Comprehensive publishing solutions for academic journals and scholarly societies. Ensuring seamless workflows, high-quality standards, global visibility, and academic impact.',
-}
+    "Comprehensive publishing solutions for academic journals and scholarly societies. Ensuring seamless workflows, high-quality standards, global visibility, and academic impact.",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <Header />
+        {children}
+      </body>
     </html>
-  )
+  );
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -83,34 +84,34 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          <a
-            href="#services"
+          <Link
+            href="/"
             className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
           >
             Home
-          </a>
+          </Link>
 
           <button className="flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground transition-colors duration-300">
             Services{" "}
             <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300" />
           </button>
 
-          <a
-            href="#mission"
+          <Link
+            href="/about"
             className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
           >
             About Us
-          </a>
+          </Link>
           <button className="flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground transition-colors duration-300">
             Resources{" "}
             <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300" />
           </button>
-          <a
-            href="#cta"
+          <Link
+            href="/contact"
             className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* CTA Buttons */}
