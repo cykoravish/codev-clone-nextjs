@@ -255,7 +255,7 @@ export default function AIServices() {
         <div className="bg-[#030b1c] border border-cyan-900/40 rounded-2xl p-8 shadow-lg">
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
-              <Bot className="text-cyan-400" size={28} />
+              <BrainCircuit className="text-cyan-400" size={28} />
             </div>
 
             <h3 className="text-xl font-semibold">AI Agent Development</h3>
@@ -264,12 +264,12 @@ export default function AIServices() {
           <div className="space-y-6 text-sm">
             <div className="flex justify-between border-b border-slate-800 pb-4">
               <span className="text-gray-400">Average delivery time</span>
-              <span className="text-cyan-400 font-medium">6 weeks</span>
+              <span className="text-cyan-400 font-medium">10 weeks</span>
             </div>
 
             <div className="flex justify-between border-b border-slate-800 pb-4">
               <span className="text-gray-400">Typical ROI horizon</span>
-              <span className="text-cyan-400 font-medium">&lt; 3 months</span>
+              <span className="text-cyan-400 font-medium">&lt; 4 months</span>
             </div>
 
             <div className="flex justify-between border-b border-slate-800 pb-4">
@@ -287,42 +287,41 @@ export default function AIServices() {
         {/* RIGHT CARD */}
         <div>
           <span className="text-xs tracking-widest text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded-full">
-            CORE CAPABILITY
+            DEEP INTEGRATION
           </span>
 
           <h2 className="text-4xl md:text-5xl font-bold mt-6 mb-6">
-            AI Agent Development
+            LLM Integration
           </h2>
 
           <p className="text-gray-400 leading-relaxed mb-6">
-            Autonomous AI agents represent a fundamental shift in how software
-            delivers value. Unlike traditional applications that execute
-            deterministic logic, agents perceive their environment, reason about
-            goals, form plans, and take sequences of actions to achieve
-            outcomes. At AgenticAI Tech Hub, we have been building production
-            agents since the earliest viable LLM APIs, accumulating a depth of
-            experience that separates genuinely capable agents from impressive
-            demos.
+            Integrating a large language model into an enterprise product is far
+            more complex than calling an API. Token economics, latency
+            requirements, context window management, hallucination mitigation,
+            and graceful degradation all require careful engineering. Our LLM
+            integration team has shipped integrations for clients ranging from
+            solo-founder startups to Fortune 100 companies, and we bring that
+            accumulated knowledge to every new project.
           </p>
 
           <p className="text-gray-400 leading-relaxed mb-6">
-            Our agent development methodology starts with a rigorous
-            specification of the agent's goal space, tool inventory, and failure
-            modes. We use structured prompting frameworks combined with
-            code-execution capabilities to give agents reliable, verifiable
-            outputs rather than free-form text. Memory architectures combining
-            working memory, episodic memory, and semantic retrieval enable
-            agents to maintain context across long task horizons without losing
-            coherence.
+            Retrieval-Augmented Generation (RAG) is our most requested
+            capability. We design RAG systems that go well beyond naive vector
+            search — incorporating hybrid retrieval, re-ranking, contextual
+            compression, and confidence scoring to deliver answers that are not
+            just relevant but demonstrably accurate. Our RAG implementations
+            include automatic citation tracking so users can verify every claim
+            the system makes, a critical requirement for regulated industries.
           </p>
 
           <p className="text-gray-400 leading-relaxed">
-            We take quality assurance seriously at every layer. Every agent we
-            ship undergoes red-team testing, adversarial prompt injection
-            analysis, and load testing before production. Post-deployment, our
-            observability stack tracks every agent action with full replay
-            capability so you can audit exactly what your agent did and why. We
-            continue supporting agents in production for as long as you need us.
+            For clients with proprietary domain data, fine-tuning consistently
+            outperforms prompt engineering for specialized tasks. We manage the
+            entire fine-tuning lifecycle: dataset curation, training
+            infrastructure, evaluation, and safe deployment using blue-green
+            rollout strategies. We track model performance over time and trigger
+            retraining automatically when drift is detected, ensuring your
+            models improve continuously rather than degrading silently.
           </p>
         </div>
       </div>
@@ -333,42 +332,41 @@ export default function AIServices() {
         {/* LEFT CONTENT */}
         <div>
           <span className="text-xs tracking-widest text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded-full">
-            CORE CAPABILITY
+            PROCESS AUTOMATION
           </span>
 
           <h2 className="text-4xl md:text-5xl font-bold mt-6 mb-6">
-            AI Agent Development
+            Autonomous Workflows
           </h2>
 
           <p className="text-gray-400 leading-relaxed mb-6">
-            Autonomous AI agents represent a fundamental shift in how software
-            delivers value. Unlike traditional applications that execute
-            deterministic logic, agents perceive their environment, reason about
-            goals, form plans, and take sequences of actions to achieve
-            outcomes. At AgenticAI Tech Hub, we have been building production
-            agents since the earliest viable LLM APIs, accumulating a depth of
-            experience that separates genuinely capable agents from impressive
-            demos.
+            True workflow automation requires more than connecting APIs — it
+            requires intelligence at every decision point. Our autonomous
+            workflow platform combines deterministic process logic with AI
+            judgment for the ambiguous cases that traditional RPA cannot handle.
+            Whether it's classifying an inbound email, extracting structured
+            data from an invoice, or deciding when to escalate to a human, our
+            workflows handle complexity gracefully.
           </p>
 
           <p className="text-gray-400 leading-relaxed mb-6">
-            Our agent development methodology starts with a rigorous
-            specification of the agent's goal space, tool inventory, and failure
-            modes. We use structured prompting frameworks combined with
-            code-execution capabilities to give agents reliable, verifiable
-            outputs rather than free-form text. Memory architectures combining
-            working memory, episodic memory, and semantic retrieval enable
-            agents to maintain context across long task horizons without losing
-            coherence.
+            We build workflows using event-driven architectures on proven
+            orchestration platforms including Temporal, Prefect, and Apache
+            Airflow, choosing the right tool for each client's scale and
+            compliance requirements. Every workflow includes comprehensive
+            logging, error handling, and dead-letter queues to ensure that no
+            task is silently dropped. Retry logic and idempotency guarantees
+            mean partial failures never corrupt your data.
           </p>
 
           <p className="text-gray-400 leading-relaxed">
-            We take quality assurance seriously at every layer. Every agent we
-            ship undergoes red-team testing, adversarial prompt injection
-            analysis, and load testing before production. Post-deployment, our
-            observability stack tracks every agent action with full replay
-            capability so you can audit exactly what your agent did and why. We
-            continue supporting agents in production for as long as you need us.
+            Change is inevitable in any business, and we design workflows for
+            evolution from the start. Modular step functions,
+            configuration-driven behavior, and a visual workflow editor allow
+            your team to update process logic without code changes. We provide
+            training and documentation to make your team self-sufficient, and
+            our support team is available when you need expert guidance on more
+            complex modifications.
           </p>
         </div>
 
@@ -376,7 +374,7 @@ export default function AIServices() {
         <div className="bg-[#030b1c] border border-cyan-900/40 rounded-2xl p-8 shadow-lg">
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
-              <Bot className="text-cyan-400" size={28} />
+              <Zap className="text-cyan-400" size={28} />
             </div>
 
             <h3 className="text-xl font-semibold">AI Agent Development</h3>
@@ -385,12 +383,12 @@ export default function AIServices() {
           <div className="space-y-6 text-sm">
             <div className="flex justify-between border-b border-slate-800 pb-4">
               <span className="text-gray-400">Average delivery time</span>
-              <span className="text-cyan-400 font-medium">6 weeks</span>
+              <span className="text-cyan-400 font-medium">8 weeks</span>
             </div>
 
             <div className="flex justify-between border-b border-slate-800 pb-4">
               <span className="text-gray-400">Typical ROI horizon</span>
-              <span className="text-cyan-400 font-medium">&lt; 3 months</span>
+              <span className="text-cyan-400 font-medium">&lt; 2 months</span>
             </div>
 
             <div className="flex justify-between border-b border-slate-800 pb-4">
