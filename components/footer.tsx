@@ -5,20 +5,22 @@ import { Linkedin, Twitter, Facebook, Instagram, Youtube } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const footerLinks = {
-  Publishing: [
-    { label: "Journal Publishing", href: "#" },
-    { label: "Editorial Services", href: "#" },
-    { label: "Indexing & Discoverability", href: "#" },
+  Pages: [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "Solution", href: "/solutions" },
+    { label: "About Us", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ],
-  "For Authors": [
-    { label: "Submit Manuscript", href: "#" },
-    { label: "Author Guidelines", href: "#" },
-    { label: "Publication Ethics", href: "#" },
-  ],
-  Resources: [
-    { label: "Blog", href: "#" },
-    { label: "Webinars", href: "#" },
-    { label: "Publishing Guide", href: "#" },
+  // Social: [
+  //   { label: "Submit Manuscript", href: "#" },
+  //   { label: "Author Guidelines", href: "#" },
+  //   { label: "Publication Ethics", href: "#" },
+  // ],
+  Contact: [
+    { label: "agenticaitechhub@gmail.com", href: "#" },
+    { label: "+1 (555) 000-1234", href: "#" },
+    { label: "2102 Linden LN, Palatine, IL 60067", href: "#" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "#" },
@@ -33,7 +35,7 @@ export default function Footer() {
   return (
     <footer ref={ref} className="border-t border-border bg-logo">
       <div className="mx-auto max-w-7xl px-6 py-14 bg-logo">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16">
           {/* Brand column */}
           <div
             className="lg:col-span-2"
@@ -51,7 +53,7 @@ export default function Footer() {
               Building the future with Autonomous AI agents and Intelligent
               systems that transform businesses at scale.
             </p>
-
+            {/* 
             <div className="flex items-center gap-3 mt-6">
               {[Linkedin, Twitter, Facebook, Instagram, Youtube].map(
                 (Icon, i) => (
@@ -65,7 +67,7 @@ export default function Footer() {
                   </a>
                 ),
               )}
-            </div>
+            </div> */}
           </div>
 
           {/* Link columns */}
@@ -105,16 +107,15 @@ export default function Footer() {
           style={{ "--delay": "600ms" } as React.CSSProperties}
         >
           <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-            <span>Kuala Lumpur, Malaysia</span>
             <a
-              href="mailto:info@haliconpub.com"
+              href="mailto:agenticaitechhub@gmail.com"
               className="hover:text-primary transition-colors duration-300"
             >
-              info@haliconpub.com
+              agenticaitechhub@gmail.com
             </a>
           </div>
           <p className="text-sm text-muted-foreground">
-            {"Halicon Publication \u00A9 2025. All rights reserved."}
+            {"Agentic Ai \u00A9 2025. All rights reserved."}
           </p>
         </div>
       </div>

@@ -39,7 +39,7 @@ export default function Page() {
                 <Mail className="text-cyan-400" size={18} />
               </div>
               <p className="text-gray-300 text-sm sm:text-base">
-                hello@agenticaitechhub.com
+                agenticaitechhub@gmail.com
               </p>
             </div>
 
@@ -57,7 +57,7 @@ export default function Page() {
                 <MapPin className="text-cyan-400" size={18} />
               </div>
               <p className="text-gray-300 text-sm sm:text-base">
-                San Francisco, CA & Remote Worldwide
+                2102 Linden LN, Palatine, IL 60067
               </p>
             </div>
           </div>
