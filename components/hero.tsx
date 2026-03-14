@@ -2,9 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import { Meteors } from "./ui/meteors";
+import { useQuoteModal } from "@/contexts/QuoteModalContext";
+import Link from "next/link";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const { openQuote } = useQuoteModal();
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 50);
@@ -68,19 +71,19 @@ export default function Hero() {
         <div
           className={`mt-10 flex flex-wrap items-center justify-center gap-4 transition-all duration-700 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
-          <a
-            href="#services"
+          <button
+            onClick={openQuote}
             className="rounded-full border-2 border-primary px-7 py-3 text-sm font-semibold text-primary hover:bg-primary/5 transition-all duration-300"
           >
             Start Your AI Journey
-          </a>
+          </button>
 
-          <a
-            href="#cta"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg"
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 rounded-full px-7 py-3 text-sm font-semibold text-primary-foreground"
           >
             Explore Our Services
-          </a>
+          </Link>
         </div>
 
         {/* Stats */}

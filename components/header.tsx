@@ -3,11 +3,17 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import QuoteModal from "./quote-modal";
+import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const ticking = useRef(false);
+  const pathname = usePathname();
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const { openQuote } = useQuoteModal();
 
   const onScroll = useCallback(() => {
     if (!ticking.current) {
@@ -43,13 +49,13 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-1">
+        <Link href="/" className="flex items-center gap-1">
           <img
             src="/images/logo.png"
             alt="Logo"
             className="h-7 md:h-8 lg:h-12 w-auto"
           />
-        </a>
+        </Link>
 
         {/* <svg
             width="160"
@@ -86,19 +92,31 @@ export default function Header() {
         <nav className="hidden lg:flex items-center gap-8">
           <Link
             href="/"
-            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+            className={`text-sm transition-colors duration-300 ${
+              pathname === "/"
+                ? "text-primary font-semibold"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
           >
             Home
           </Link>
           <Link
             href="/services"
-            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+            className={`text-sm transition-colors duration-300 ${
+              pathname === "/services"
+                ? "text-primary font-semibold"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
           >
             Services
           </Link>
           <Link
             href="/solutions"
-            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+            className={`text-sm transition-colors duration-300 ${
+              pathname === "/solutions"
+                ? "text-primary font-semibold"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
           >
             Solutions
           </Link>
@@ -110,7 +128,11 @@ export default function Header() {
 
           <Link
             href="/about"
-            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+            className={`text-sm transition-colors duration-300 ${
+              pathname === "/about"
+                ? "text-primary font-semibold"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
           >
             About Us
           </Link>
@@ -120,7 +142,11 @@ export default function Header() {
           </button> */}
           <Link
             href="/contact"
-            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+            className={`text-sm transition-colors duration-300 ${
+              pathname === "/contact"
+                ? "text-primary font-semibold"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
           >
             Contact
           </Link>
@@ -128,18 +154,12 @@ export default function Header() {
 
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* <a
-            href="#"
-            className="rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary hover:bg-primary/5 transition-all duration-300"
-          >
-            Author Portal
-          </a> */}
-          <a
-            href="#cta"
-            className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-md"
+          <button
+            onClick={openQuote}
+            className="rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground  transition-all duration-300  bg-cyan-500 hover:bg-cyan-600"
           >
             Request a Quote
-          </a>
+          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -185,7 +205,7 @@ export default function Header() {
       >
         <div className="bg-background border-t border-border px-6 py-5 flex flex-col gap-1">
           {[
-            { name: "Home", href: "" },
+            { name: "Home", href: "/" },
             { name: "Services", href: "/services" },
 
             { name: "Solutions", href: "/solutions" },
@@ -195,7 +215,12 @@ export default function Header() {
             <Link
               key={i}
               href={item.href}
-              className="text-sm text-foreground/70 hover:text-foreground py-3 transition-all duration-300 border-b border-border/50 last:border-0"
+              onClick={() => setMobileOpen(false)}
+              className={`text-sm py-3 transition-all duration-300 border-b border-border/50 last:border-0 ${
+                pathname === item.href
+                  ? "text-primary font-semibold"
+                  : "text-foreground/70 hover:text-foreground"
+              }`}
               style={{
                 opacity: mobileOpen ? 1 : 0,
                 transform: mobileOpen ? "translateX(0)" : "translateX(-12px)",
@@ -213,21 +238,16 @@ export default function Header() {
               transition: "opacity 0.3s ease 350ms, transform 0.3s ease 350ms",
             }}
           >
-            <a
-              href="#"
-              className="rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary"
+            <button
+              onClick={() => setQuoteOpen(true)}
+              className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-md"
             >
-              Author Portal
-            </a>
-            <a
-              href="#cta"
-              className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-            >
-              Submit Manuscript
-            </a>
+              Request a Quote
+            </button>
           </div>
         </div>
       </div>
+      <QuoteModal open={quoteOpen} onClose={() => setQuoteOpen(false)} />
     </header>
   );
 }

@@ -12,11 +12,13 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
 export default function About() {
   const ref = useScrollReveal<HTMLElement>({ threshold: 0.1 });
   const lineRef = useRef<HTMLDivElement>(null);
   const [lineVisible, setLineVisible] = useState(false);
+  const { openQuote } = useQuoteModal();
 
   const features = [
     "10+ years of AI & software engineering expertise",
@@ -193,7 +195,10 @@ export default function About() {
           </div>
 
           {/* BUTTON */}
-          <button className="mt-10 bg-cyan-500 hover:bg-cyan-600 transition px-6 py-3 rounded-lg flex items-center gap-2 text-sm font-medium">
+          <button
+            onClick={openQuote}
+            className="mt-10 bg-cyan-500 hover:bg-cyan-600 transition px-6 py-3 rounded-lg flex items-center gap-2 text-sm font-medium"
+          >
             Work With Us
             <ArrowRight size={16} />
           </button>

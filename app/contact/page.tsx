@@ -8,9 +8,67 @@ import {
   User,
   Clock,
 } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Page() {
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(false);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+
+    setLoading(true);
+    setSuccess(false);
+    setError(false);
+
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      company: formData.get("company"),
+      email: formData.get("email"),
+      service: formData.get("service"),
+      budget: formData.get("budget"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        form.reset();
+        setSuccess(true);
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="bg-[#020617] text-white py-16 md:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
@@ -105,15 +163,24 @@ export default function Page() {
 
         {/* RIGHT SIDE FORM */}
         <div className="bg-[#0f172a] border border-slate-800 rounded-xl p-6 sm:p-8">
-          <h3 className="text-lg sm:text-xl font-semibold mb-6">
-            Send Us a Message
-          </h3>
+          {success && (
+            <div className="mb-4 rounded-lg bg-green-500/10 border border-green-500 text-green-400 px-4 py-3 text-sm">
+              ✅ Message sent successfully! We'll get back to you soon.
+            </div>
+          )}
+          {error && (
+            <div className="mb-4 rounded-lg bg-red-500/10 border border-red-500 text-red-400 px-4 py-3 text-sm">
+              ❌ Failed to send message. Please try again.
+            </div>
+          )}
 
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="text-sm text-gray-400">Full Name *</label>
               <input
+                name="name"
                 type="text"
+                required
                 placeholder="John Doe"
                 className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
               />
@@ -122,6 +189,7 @@ export default function Page() {
             <div>
               <label className="text-sm text-gray-400">Company Name</label>
               <input
+                name="company"
                 type="text"
                 placeholder="Acme Corp"
                 className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
@@ -131,7 +199,9 @@ export default function Page() {
             <div>
               <label className="text-sm text-gray-400">Email Address *</label>
               <input
+                name="email"
                 type="email"
+                required
                 placeholder="john@company.com"
                 className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
               />
@@ -143,7 +213,10 @@ export default function Page() {
                 <label className="text-sm text-gray-400">
                   Service Interest
                 </label>
-                <select className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none">
+                <select
+                  name="service"
+                  className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none"
+                >
                   <option>Select a service...</option>
                   <option>AI Development</option>
                   <option>Automation</option>
@@ -153,7 +226,10 @@ export default function Page() {
 
               <div>
                 <label className="text-sm text-gray-400">Budget Range</label>
-                <select className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none">
+                <select
+                  name="budget"
+                  className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none"
+                >
                   <option>Select budget range...</option>
                   <option>$5k - $10k</option>
                   <option>$10k - $50k</option>
@@ -165,7 +241,9 @@ export default function Page() {
             <div>
               <label className="text-sm text-gray-400">Message *</label>
               <textarea
+                name="message"
                 rows={4}
+                required
                 placeholder="Tell us about your project..."
                 className="w-full mt-1 bg-[#020617] border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
               />
@@ -173,9 +251,15 @@ export default function Page() {
 
             <button
               type="submit"
-              className="w-full bg-cyan-500 hover:bg-cyan-600 transition rounded-lg py-3 text-sm sm:text-base font-medium"
+              disabled={loading}
+              className={`w-full flex items-center justify-center gap-2 rounded-lg py-3 text-sm sm:text-base font-medium transition
+  ${loading ? "bg-cyan-700 cursor-not-allowed" : "bg-cyan-500 hover:bg-cyan-600"}`}
             >
-              Send Message →
+              {loading && (
+                <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              )}
+
+              {loading ? "Sending..." : "Send Message →"}
             </button>
 
             <p className="text-xs text-gray-500 text-center">
@@ -187,3 +271,4 @@ export default function Page() {
     </section>
   );
 }
+
