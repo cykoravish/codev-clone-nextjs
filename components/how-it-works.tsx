@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import React from "react"
-import { FileText, Users, Settings, BookOpen, Layers } from "lucide-react"
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import React from "react";
+import { FileText, Users, Settings, BookOpen, Layers } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const models = [
   {
@@ -29,15 +29,19 @@ const models = [
     desc: "From concept to first issue, we guide new journals through editorial board formation, ISSN registration, indexing applications, and building a sustainable submission pipeline.",
     tag: "End-to-end launch support",
   },
-]
+];
 
 export default function HowItWorks() {
-  const ref = useScrollReveal<HTMLElement>({ threshold: 0.06 })
+  const ref = useScrollReveal<HTMLElement>({ threshold: 0.06 });
 
   return (
     <section ref={ref} className="py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center mb-4" data-reveal="fade-up" style={{ "--delay": "0ms" } as React.CSSProperties}>
+        <div
+          className="text-center mb-4"
+          data-reveal="fade-up"
+          style={{ "--delay": "0ms" } as React.CSSProperties}
+        >
           <span className="text-xs font-semibold text-muted-foreground tracking-[0.2em] uppercase">
             Publishing Models
           </span>
@@ -53,24 +57,35 @@ export default function HowItWorks() {
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
           {models.map((model, i) => {
-            const directions = ["fade-right", "fade-left", "fade-right", "fade-left"] as const
+            const directions = [
+              "fade-right",
+              "fade-left",
+              "fade-right",
+              "fade-left",
+            ] as const;
             return (
               <div
                 key={model.title}
-                className="group rounded-2xl border border-border bg-secondary/40 p-8 hover:border-primary/30 hover:shadow-lg transition-all duration-500 hover:-translate-y-2"
+                className="group rounded-2xl border border-primary/20 bg-primary/5  p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500 "
                 data-reveal={directions[i]}
-                style={{ "--delay": `${200 + i * 120}ms` } as React.CSSProperties}
+                style={
+                  { "--delay": `${200 + i * 120}ms` } as React.CSSProperties
+                }
               >
-                <div className="mb-4 flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                <div className="mb-4 flex items-center justify-center  w-10 h-10 rounded-xl bg-primary/5 group-hover:bg-primary/5 transition-colors duration-300">
                   <model.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{model.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{model.desc}</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {model.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {model.desc}
+                </p>
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-primary/10 text-primary">
                   {model.tag}
                 </span>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -89,7 +104,11 @@ export default function HowItWorks() {
                 The Complete Ecosystem - Included with Every Publishing Model
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Beyond publishing, you gain access to Halicon&apos;s full support infrastructure: dedicated editorial managers, peer review coordination, DOI and metadata registration, XML production, digital archiving, usage analytics, and ongoing indexing support. Everything your journal needs to thrive.
+                Beyond publishing, you gain access to Halicon&apos;s full
+                support infrastructure: dedicated editorial managers, peer
+                review coordination, DOI and metadata registration, XML
+                production, digital archiving, usage analytics, and ongoing
+                indexing support. Everything your journal needs to thrive.
               </p>
             </div>
           </div>
@@ -116,5 +135,5 @@ export default function HowItWorks() {
         </div>
       </div>
     </section>
-  )
+  );
 }

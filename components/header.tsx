@@ -90,11 +90,23 @@ export default function Header() {
           >
             Home
           </Link>
+          <Link
+            href="/services"
+            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+          >
+            Services
+          </Link>
+          <Link
+            href="/solutions"
+            className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+          >
+            Solutions
+          </Link>
 
-          <button className="flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground transition-colors duration-300">
+          {/* <button className="flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground transition-colors duration-300">
             Services{" "}
             <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300" />
-          </button>
+          </button> */}
 
           <Link
             href="/about"
@@ -102,10 +114,10 @@ export default function Header() {
           >
             About Us
           </Link>
-          <button className="flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground transition-colors duration-300">
+          {/* <button className="flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground transition-colors duration-300">
             Resources{" "}
             <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300" />
-          </button>
+          </button> */}
           <Link
             href="/contact"
             className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
@@ -173,15 +185,16 @@ export default function Header() {
       >
         <div className="bg-background border-t border-border px-6 py-5 flex flex-col gap-1">
           {[
-            "Publishing Solutions",
-            "Journals",
-            "About Us",
-            "Resources",
-            "Contact",
+            { name: "Home", href: "" },
+            { name: "Services", href: "/services" },
+
+            { name: "Solutions", href: "/solutions" },
+            { name: "About", href: "/about" },
+            { name: "Contact", href: "/contact" },
           ].map((item, i) => (
-            <a
-              key={item}
-              href="#"
+            <Link
+              key={i}
+              href={item.href}
               className="text-sm text-foreground/70 hover:text-foreground py-3 transition-all duration-300 border-b border-border/50 last:border-0"
               style={{
                 opacity: mobileOpen ? 1 : 0,
@@ -189,8 +202,8 @@ export default function Header() {
                 transition: `opacity 0.3s ease ${i * 60}ms, transform 0.3s ease ${i * 60}ms, color 0.3s ease`,
               }}
             >
-              {item}
-            </a>
+              {item.name}
+            </Link>
           ))}
           <div
             className="flex gap-3 pt-4"
