@@ -52,11 +52,11 @@ export default function WhyCoDev() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-6xl mx-auto text-center">
           <span
-            className="rounded-full border border-border bg-background/80 backdrop-blur-sm text-muted-foreground px-4 py-1 text-sm"
+            className="rounded-full border border-border backdrop-blur-sm  border-cyan-500 text-cyan-400 px-4 py-1 text-sm"
             data-reveal="fade-up"
             style={{ "--delay": "0ms" } as React.CSSProperties}
           >
-            <span>●</span> INDUSTRIES WE SERVE
+            INDUSTRIES WE SERVE
           </span>
         </div>
 
@@ -66,7 +66,8 @@ export default function WhyCoDev() {
           data-reveal="fade-up"
           style={{ "--delay": "0ms" } as React.CSSProperties}
         >
-          AI Solutions Across Every Sector
+          AI Solutions Across{" "}
+          <span className="text-cyan-400">Every Sector</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto leading-relaxed"
@@ -85,7 +86,7 @@ export default function WhyCoDev() {
             return (
               <div
                 key={item.title}
-                className="group rounded-2xl border border-border bg-secondary/40 p-7 hover:border-primary/30 hover:shadow-md transition-all duration-500 hover:-translate-y-1.5"
+                className="group rounded-2xl border border-primary/20 bg-primary/5  p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500"
                 data-reveal={directions[col]}
                 style={
                   {

@@ -47,9 +47,9 @@ export default function Footer() {
                 className="h-7 md:h-8 lg:h-14 w-auto"
               />
             </a>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Empowering scholarly publishing with comprehensive journal
-              solutions, rigorous quality standards, and global academic reach.
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mt-2">
+              Building the future with Autonomous AI agents and Intelligent
+              systems that transform businesses at scale.
             </p>
 
             <div className="flex items-center gap-3 mt-6">
