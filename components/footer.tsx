@@ -19,7 +19,7 @@ const footerLinks = {
   // ],
   Contact: [
     { label: "agenticaitechhub@gmail.com", href: "#" },
-    { label: "+1 (555) 000-1234", href: "#" },
+    // { label: "+1 (555) 000-1234", href: "#" },
     { label: "2102 Linden LN, Palatine, IL 60067", href: "#" },
   ],
   Legal: [

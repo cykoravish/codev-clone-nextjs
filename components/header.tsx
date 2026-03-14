@@ -240,7 +240,7 @@ export default function Header() {
           >
             <button
               onClick={() => setQuoteOpen(true)}
-              className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-md"
+              className="rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground bg-cyan-500 hover:bg-cyan-600"
             >
               Request a Quote
             </button>
