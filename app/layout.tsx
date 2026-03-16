@@ -11,9 +11,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title:
-    "Halicon Publication | Leading Provider of Journal Publishing Solutions",
+    "Agentic AI Tech Hub | Ready To Build Your AI Future",
   description:
-    "Comprehensive publishing solutions for academic journals and scholarly societies. Ensuring seamless workflows, high-quality standards, global visibility, and academic impact.",
+    "Design, Develop and Deploy Powerful AI agent and Intelligent System ",
 };
 
 export default function RootLayout({
