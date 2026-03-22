@@ -307,3 +307,137 @@ html {
 .animate-fadeIn {
   animation: fadeIn 0.25s ease;
 }
+
+/* blogs styles  */
+/* Add these styles to ensure headings are properly styled in the TipTap editor */
+.ProseMirror h1 {
+  font-size: 2em !important;
+  font-weight: bold !important;
+  margin-top: 0.67em !important;
+  margin-bottom: 0.67em !important;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5em !important;
+  font-weight: bold !important;
+  margin-top: 0.83em !important;
+  margin-bottom: 0.83em !important;
+}
+
+.ProseMirror h3 {
+  font-size: 1.17em !important;
+  font-weight: bold !important;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+/* Add these styles for bullet points and numbered lists in the TipTap editor */
+.ProseMirror ul {
+  list-style-type: disc !important;
+  padding-left: 1.5em !important;
+  margin: 1em 0 !important;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5em !important;
+  margin: 1em 0 !important;
+}
+
+.ProseMirror li {
+  margin-bottom: 0.5em !important;
+}
+
+.ProseMirror li p {
+  margin: 0 !important;
+}
+
+/* Ensure nested lists are properly styled */
+.ProseMirror ul ul,
+.ProseMirror ol ol,
+.ProseMirror ul ol,
+.ProseMirror ol ul {
+  margin: 0.5em 0 0.5em 1em !important;
+}
+
+.ProseMirror ul ul {
+  list-style-type: circle !important;
+}
+
+.ProseMirror ul ul ul {
+  list-style-type: square !important;
+}
+
+/* Style links in the editor without underline */
+.ProseMirror a {
+  color: #2563eb !important; /* blue-600 */
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+.ProseMirror a:hover {
+  color: #1d4ed8 !important; /* blue-700 */
+}
+
+/* Style blockquotes in the editor */
+.ProseMirror blockquote {
+  border-left: 4px solid #d1d5db !important; /* gray-300 */
+  padding-left: 1rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  margin: 1rem 0 !important;
+  font-style: italic !important;
+  color: #4b5563 !important; /* gray-600 */
+}
+
+/* Preserve whitespace in the editor and rendered content */
+.ProseMirror p {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  margin-bottom: 1em !important;
+}
+
+/* Ensure proper paragraph spacing */
+.ProseMirror p + p {
+  margin-top: 1em !important;
+}
+
+/* Preserve whitespace in rendered content */
+.prose p {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  min-height: 1.5em !important;
+}
+
+/* Ensure empty paragraphs are visible */
+.prose p:empty,
+.ProseMirror p:empty {
+  min-height: 1.5em !important;
+  display: block !important;
+}
+
+/* Fix spacing in blog post content */
+.blog-content p,
+.blog-content div,
+.blog-content span {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+
+/* Ensure multiple consecutive empty paragraphs are preserved */
+.blog-content p:empty,
+.prose p:empty {
+  min-height: 1.5em !important;
+  display: block !important;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+/* Ensure line breaks are preserved */
+.ProseMirror br,
+.prose br,
+.blog-content br {
+  display: block !important;
+  content: "" !important;
+  margin-top: 1em !important;
+}

@@ -150,6 +150,16 @@ export default function Header() {
           >
             Contact
           </Link>
+          <Link
+            href="/blogs"
+            className={`text-sm transition-colors duration-300 ${
+              pathname === "/blogs"
+                ? "text-primary font-semibold"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
+          >
+            Blogs
+          </Link>
         </nav>
 
         {/* CTA Buttons */}
@@ -211,6 +221,7 @@ export default function Header() {
             { name: "Solutions", href: "/solutions" },
             { name: "About", href: "/about" },
             { name: "Contact", href: "/contact" },
+            { name: "Blogs", href: "/blogs" },
           ].map((item, i) => (
             <Link
               key={i}

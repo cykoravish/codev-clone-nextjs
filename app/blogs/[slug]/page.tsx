@@ -1,0 +1,111 @@
+import BlogPostContent from "@/components/blogs/blog-post-content";
+export async function generateMetadata({ params }:any) {
+  try {
+    const { slug } = await params
+    const url = new URL(
+      "/api/blog/posts",
+      process.env.NEXT_PUBLIC_APP_URL ||
+        "https://novanectar.co.in" ||
+        "http://localhost:3000"
+    );
+    url.searchParams.append("slug", slug);  
+
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 3600 },
+    });
+
+    if (!response.ok) {
+      return {
+        title: "Blog Post Not Found",
+        description: "The requested blog post could not be found.",
+      };
+    }
+
+    const post = await response.json();
+
+    if (!post) {
+      return {
+        title: "Blog Post Not Found",
+        description: "The requested blog post could not be found.",
+      };
+    }
+
+    // Create structured data
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      image: post.featuredImage ? [post.featuredImage] : [],
+      author: {
+        "@type": "Person",
+        name: post.author,
+      },
+      datePublished: post.createdAt,
+      dateModified: post.updatedAt || post.createdAt,
+      publisher: {
+        "@type": "Organization",
+        name: "novanectar",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://novanectar.co.in/logo.png",
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${
+          process.env.NEXT_PUBLIC_APP_URL || "https://novanectar.co.in"
+        }/blogs/${post.slug}`,
+      },
+    };
+
+    return {
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      openGraph: {
+        title: post.metaTitle || post.title,
+        description: post.metaDescription || post.excerpt,
+        images: post.featuredImage
+          ? [
+              {
+                url: post.featuredImage,
+                alt: post.featuredImageAlt || post.title,
+              },
+            ]
+          : [],
+        type: "article",
+        authors: post.author ? [post.author] : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.metaTitle || post.title,
+        description: post.metaDescription || post.excerpt,
+        images: post.featuredImage
+          ? [
+              {
+                url: post.featuredImage,
+                alt: post.featuredImageAlt || post.title,
+              },
+            ]
+          : [],
+      },
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_APP_URL}/blogs/${post.slug}`,
+      },
+      other: {
+        "script:ld+json": JSON.stringify(jsonLd),
+      },
+    };
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Blog",
+      description: "Read our latest blog posts",
+    };
+  }
+}
+
+export default async function Page({ params }: any) {
+    const { slug } = await params
+  return <BlogPostContent slug={slug} />;
+}
