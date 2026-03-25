@@ -441,3 +441,13 @@ html {
   content: "" !important;
   margin-top: 1em !important;
 }
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

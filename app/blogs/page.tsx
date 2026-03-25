@@ -77,10 +77,10 @@ export default function BlogPage() {
       {/* Hero Section with Search */}
       <div className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan-500">
             Our Blog
           </h1>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-100 mb-8 max-w-2xl mx-auto">
             Insights, guides, and expert opinions on technology, business, and
             more.
           </p>
@@ -142,11 +142,11 @@ export default function BlogPage() {
             {filteredPosts.map((post) => (
               <div
                 key={post._id}
-                className="bg-white rounded-xl overflow-hidden shadow hover:shadow-md transition-shadow duration-300"
+                className="overflow-hidden shadow group rounded-2xl border border-primary/20 bg-primary/5 p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500 text-foreground"
               >
                 <Link href={`/blogs/${post.slug}`} className="block group">
                   {/* Image Section - Fixed to ensure proper containment */}
-                  <div className="relative w-full h-48 overflow-hidden bg-gray-50">
+                  <div className="relative w-full h-48 overflow-hidden">
                     <Image
                       src={
                         post.featuredImage ||
@@ -167,34 +167,34 @@ export default function BlogPage() {
 
                   {/* Content Section */}
                   <div className="p-4">
-                    <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <div className="flex items-center text-sm mb-2 text-foreground">
                       <Calendar className="h-4 w-4 mr-1" />
                       <span>
                         {format(new Date(post.createdAt), "dd MMM yyyy")}
                       </span>
                     </div>
 
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 pr-4 group-hover:text-purple-600 transition-colors duration-200">
+                    <div className="flex justify-between items-start mb-2 text-foreground">
+                      <h3 className="text-lg font-semibold pr-4">
                         {post.title}
                       </h3>
-                      <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-purple-600 transition-colors duration-200 flex-shrink-0" />
+                      <ArrowRight className="h-4 w-4 transition-colors duration-200 flex-shrink-0" />
                     </div>
 
                     {/* Author */}
                     {post.author && (
-                      <p className="text-sm text-gray-500 mb-2">
+                      <p className="text-sm mb-2 text-muted-foreground">
                         By {post.author}
                       </p>
                     )}
 
                     {/* Truncated Excerpt */}
-                    <p className="text-gray-600 text-sm line-clamp-2">
+                    <p className="text-muted-foreground text-sm line-clamp-2">
                       {post.excerpt}
                     </p>
 
                     {/* Categories */}
-                    <div className="flex gap-2 mt-3 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <div className="flex gap-2 mt-3 overflow-x-auto whitespace-nowrap scrollbar-hide no-scrollbar">
                       {post.categories.map((category, i) => (
                         <span
                           key={i}

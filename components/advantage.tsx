@@ -59,7 +59,7 @@ export default function Advantage() {
           data-reveal="fade-up"
           style={{ "--delay": "0ms" } as React.CSSProperties}
         >
-          What Makes Us<span className="text-cyan-400">Different</span>
+          What Makes Us<span className="text-cyan-400"> Different</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto leading-relaxed"
@@ -77,7 +77,7 @@ export default function Advantage() {
             return (
               <div
                 key={item.title}
-                className="group rounded-2xl border border-primary/20 bg-primary/5  p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500"
+                className="group rounded-2xl border border-primary/20 bg-primary/5 p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500"
                 data-reveal={directions[col]}
                 style={
                   {

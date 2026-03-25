@@ -102,21 +102,25 @@ export default function BlogPostContent({ slug }: any) {
         <article className="pt-14 max-w-4xl mx-auto px-4 sm:px-6 pb-16">
           <Link
             href="/blogs"
-            className="inline-flex items-center text-purple-600 hover:text-purple-800 mb-8 transition-colors font-medium"
+            className="inline-flex items-center mb-8 transition-colors font-medium"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to blog
           </Link>
 
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
+          <div className="overflow-hidden shadow-md group rounded-2xl border border-primary/20 bg-primary/5 p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500">
             {post.featuredImage && (
-              <div className="relative h-64 sm:h-80 w-full bg-purple-50 p-4">
+              <div className="relative h-64 sm:h-80 w-full p-4">
                 <Image
                   src={
                     post.featuredImage ||
                     "/placeholder.svg?height=400&width=600&query=blog"
                   }
-                 alt={post.featuredImageAlt || post.title || "Featured image for blog post"}
+                  alt={
+                    post.featuredImageAlt ||
+                    post.title ||
+                    "Featured image for blog post"
+                  }
                   fill
                   className="object-contain"
                   priority
@@ -126,41 +130,51 @@ export default function BlogPostContent({ slug }: any) {
 
             <div className="p-6 md:p-8">
               <div className="flex flex-wrap justify-between items-center mb-6 border-b border-gray-100 pb-4">
-                <div className="text-sm text-gray-600 font-medium">
+                <div className="text-sm font-medium">
                   BY: {post.author.toUpperCase()}
                 </div>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm">
                   <Calendar className="h-4 w-4 mr-1" />
                   {format(new Date(post.createdAt), "dd MMM yyyy")}
                 </div>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
                 {post.title}
               </h2>
 
               {/* Enhanced blog content with Tailwind classes */}
-              <div className="blog-content prose max-w-none">
+              <div className="blog-content prose max-w-none prose-invert">
                 <div
-                  className="[&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mt-8 [&>h1]:mb-4 [&>h1]:text-gray-800 
-                           [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mt-8 [&>h2]:mb-4 [&>h2]:text-gray-800
-                           [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-6 [&>h3]:mb-3 [&>h3]:text-gray-800
-                           [&>p]:my-4 [&>p]:text-gray-600 [&>p]:leading-relaxed
-                           [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4 [&>ul]:text-gray-700
-                           [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4 [&>ol]:text-gray-700
-                           [&>li]:mb-2 [&>li]:text-gray-700 [&>li>p]:my-1
-                           [&>blockquote]:border-l-4 [&>blockquote]:border-gray-300 [&>blockquote]:pl-4 [&>blockquote]:py-2 [&>blockquote]:my-4 [&>blockquote]:italic [&>blockquote]:text-gray-600"
+                  className="
+    text-gray-200
+
+    [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mt-8 [&>h1]:mb-4 [&>h1]:text-white
+    [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mt-8 [&>h2]:mb-4 [&>h2]:text-white
+    [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-6 [&>h3]:mb-3 [&>h3]:text-gray-100
+
+    [&>p]:my-4 [&>p]:text-gray-300 [&>p]:leading-relaxed
+
+    [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4 [&>ul]:text-gray-300
+    [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4 [&>ol]:text-gray-300
+
+    [&>li]:mb-2 [&>li]:text-gray-300
+
+    [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500
+    [&>blockquote]:pl-4 [&>blockquote]:py-2 [&>blockquote]:my-4
+    [&>blockquote]:italic [&>blockquote]:text-gray-400
+  "
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               </div>
 
-              <div className="mt-10 pt-6 border-t border-gray-100">
+              <div className="mt-10 pt-6">
                 <div className="flex flex-wrap gap-2">
                   {post.categories.map((category, index) => (
                     <span
                       key={index}
                       className={`text-sm px-3 py-1 rounded-full ${getCategoryColorClasses(
-                        index
+                        index,
                       )}`}
                     >
                       {category}
