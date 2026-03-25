@@ -51,22 +51,19 @@ export default function BlogPage() {
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.categories.some((category) =>
-        category.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+        category.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
   );
 
   // Function to get category color classes
   const getCategoryColorClasses = (index: number) => {
     // Fixed set of color combinations that work well together
     const colorCombinations = [
-      "bg-purple-100 text-purple-700",
-      "bg-blue-100 text-blue-700",
-      "bg-green-100 text-green-700",
-      "bg-indigo-100 text-indigo-700",
-      "bg-pink-100 text-pink-700",
-      "bg-yellow-100 text-yellow-700",
-      "bg-red-100 text-red-700",
-      "bg-teal-100 text-teal-700",
+      "bg-primary/5 text-gray-200 border border-primary/30",
+      "bg-primary/5 text-gray-200 border border-primary/30",
+      "bg-primary/5 text-gray-200 border border-primary/30",
+      "bg-primary/5 text-gray-200 border border-primary/30",
+      "bg-primary/5 text-gray-200 border border-primary/30",
     ];
 
     return colorCombinations[index % colorCombinations.length];
@@ -75,7 +72,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section with Search */}
-      <div className="py-12 px-4">
+      <div className="py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan-500">
             Our Blog
@@ -93,7 +90,7 @@ export default function BlogPage() {
               placeholder="Search articles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+              className="block w-full pl-10 pr-4 py-3 rounded-lg border border-primary/20 bg-primary/5 text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
           </div>
         </div>
@@ -142,7 +139,7 @@ export default function BlogPage() {
             {filteredPosts.map((post) => (
               <div
                 key={post._id}
-                className="overflow-hidden shadow group rounded-2xl border border-primary/20 bg-primary/5 p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-500 text-foreground"
+                className="overflow-hidden shadow group rounded-2xl border border-primary/20 bg-primary/5 pb-4 hover:border-primary/50 hover:shadow-lg transition-all duration-500 text-foreground"
               >
                 <Link href={`/blogs/${post.slug}`} className="block group">
                   {/* Image Section - Fixed to ensure proper containment */}
@@ -166,8 +163,8 @@ export default function BlogPage() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-4">
-                    <div className="flex items-center text-sm mb-2 text-foreground">
+                  <div className="pt-4 px-4">
+                    <div className="flex items-center text-sm mb-2 text-foreground/80">
                       <Calendar className="h-4 w-4 mr-1" />
                       <span>
                         {format(new Date(post.createdAt), "dd MMM yyyy")}
@@ -182,11 +179,11 @@ export default function BlogPage() {
                     </div>
 
                     {/* Author */}
-                    {post.author && (
+                    {/* {post.author && (
                       <p className="text-sm mb-2 text-muted-foreground">
                         By {post.author}
                       </p>
-                    )}
+                    )} */}
 
                     {/* Truncated Excerpt */}
                     <p className="text-muted-foreground text-sm line-clamp-2">
@@ -199,7 +196,7 @@ export default function BlogPage() {
                         <span
                           key={i}
                           className={`text-xs px-3 py-1 rounded-full ${getCategoryColorClasses(
-                            i
+                            i,
                           )}`}
                         >
                           {category}
