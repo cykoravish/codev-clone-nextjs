@@ -18,7 +18,7 @@ const footerLinks = {
   //   { label: "Publication Ethics", href: "#" },
   // ],
   Contact: [
-    { label: "agenticaitechhub@gmail.com", href: "#" },
+    { label: "info@agenticaitechhub.com", href: "#" },
     { label: "+1 (847) 626-8545", href: "#" },
     { label: "2102 Linden LN, Palatine, IL 60067", href: "#" },
   ],
@@ -108,10 +108,10 @@ export default function Footer() {
         >
           <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
             <a
-              href="mailto:agenticaitechhub@gmail.com"
+              href="mailto:info@agenticaitechhub.com"
               className="hover:text-primary transition-colors duration-300"
             >
-              agenticaitechhub@gmail.com
+              info@agenticaitechhub.com
             </a>
           </div>
           <p className="text-sm text-muted-foreground">

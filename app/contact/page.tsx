@@ -97,7 +97,7 @@ export default function Page() {
                 <Mail className="text-cyan-400" size={18} />
               </div>
               <p className="text-gray-300 text-sm sm:text-base">
-                agenticaitechhub@gmail.com
+                info@agenticaitechhub.com
               </p>
             </div>
 
