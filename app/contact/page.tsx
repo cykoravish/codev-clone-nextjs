@@ -101,14 +101,14 @@ export default function Page() {
               </p>
             </div>
 
-            {/* <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
               <div className="bg-slate-800 p-3 rounded-lg">
                 <Phone className="text-cyan-400" size={18} />
               </div>
               <p className="text-gray-300 text-sm sm:text-base">
-                +1 (555) 000-1234
+                +1 (847) 626-8545
               </p>
-            </div> */}
+            </div>
 
             <div className="flex items-center gap-4">
               <div className="bg-slate-800 p-3 rounded-lg">
@@ -271,4 +271,3 @@ export default function Page() {
     </section>
   );
 }
-
